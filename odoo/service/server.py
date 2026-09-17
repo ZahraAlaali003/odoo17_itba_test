@@ -196,8 +196,7 @@ class RequestHandler(werkzeug.serving.WSGIRequestHandler):
             self.wfile = BytesIO()
 
     def log_error(self, format, *args):
-        if format == "Request timed out: %r":
-            _logger.warning("Server request timed out", stack_info=True)
+        _logger.warning("Server request timed out", stack_info=True)
         if format == "Request timed out: %r" and config['test_enable']:
             _logger.info(format, *args)
         else:
